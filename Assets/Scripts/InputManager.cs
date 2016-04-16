@@ -8,6 +8,7 @@ public class InputManager
 	public bool isEnabled = false;
 	public bool isScale = false;
 	public bool isItemSelected = false;
+	public float snapSize = 0.0f;
 	private bool isDragging = false;
 	private Vector2 touchOffset;
    
@@ -40,11 +41,13 @@ public class InputManager
  
 	private void DragOrPickUp()
 	{
-		var inputPosition = CurrentTouchPosition;
+		Vector2 inputPosition = CurrentTouchPosition;
 	 
 		if (isDragging)
 		{
-			draggedObject.transform.position = inputPosition + touchOffset;
+			Vector2 position = inputPosition + touchOffset;
+			position = ViewUtil.SnapXY(position, snapSize);
+			draggedObject.transform.position = position;
 		}
 		else
 		{

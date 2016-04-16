@@ -9,11 +9,14 @@ FEATURES
 	Overlay silhouette perimeter to see pieces.  Or pieces are translucent.
 	Click and drag piece.
 	Text at bottom.
-
-TODO
 	Click button to rotate selected.  
 		Example of button of screen in Tangram by Magmamobile.
 	Count down rotations in score beside rotate button.
+	Snap rotation to 1/8th.
+
+TODO
+	Snap move to grid.
+		Snap silhouette to grid.
 	Score 10 for fitting pieces into silhouette.
 		Check overlaps point on grid.
 	Menu button at bottom.
@@ -23,8 +26,6 @@ TODO
 	Show the active shape.
 	Highlight the completed silhouettes.
 	At menu, restart button at bottom.
-	Snap rotation to 1/8th.
-	Snap move to grid.
 	See grid.
 	Jennifer plays.
 	Upload to Ludum Dare.
@@ -150,6 +151,8 @@ NAME BRAINSTORM
 	Puzzle Turn
 
 
+JOURNAL
+
 Fri 04/15/2016 
 21:27
 
@@ -157,3 +160,23 @@ Collider inside shape.
 Collider outside shape.
 If all insides touching an inside and no outsides touching an inside then the shape fits.
 http://docs.unity3d.com/ScriptReference/Physics2D.IsTouching.html
+
+
+Sat 04/16/2016 
+10:40
+
+All silhouettes overlapped:  True.
+For each point in snapping grid:
+	If silhouette colliders overlap point:
+		If a piece collider does not overlap that point:
+			Return all silhouettes are not overlapped.
+	Else:
+		If a piece collider does overlap that point:
+			Return all silhouettes are not overlapped.
+
+This depends on collider polygons being more precise than the snapping grid and silhouette oversizing.
+
+Would also want to only enable drag and drop of pieces layer.
+
+file:///C:/Program%20Files/Unity/Editor/Data/Documentation/en/ScriptReference/Physics2D.OverlapPointNonAlloc.html
+
