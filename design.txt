@@ -1,0 +1,62 @@
+Theme: Shapeshift, Game Jam for Ludum Dare 35, April 15-17 2016
+
+FEATURES
+
+TODO
+
+REFERENCE GAME BRAINSTORM
+
+How can Jennifer enjoy one-minute?
+
+	Four piece tangrams
+		http://www.mathplayground.com/tangrams.html
+	Shape Shifter:  Geometric dissection puzzles
+		https://itunes.apple.com/us/app/shape-shifter/id443534372?mt=8
+		Circles and pie slices.
+		Man into wolf.  Wolf into cat.
+		Fit one form.  Then a new form appears.  Reuse the same pieces.
+			Score the fewest number of shifts to get the next shape.
+	Shapeshifter Puzzles:  Geometric dissection with 4 pieces.
+		http://flwoodworking.com/shapeshifter.html
+	Match 3 by shape or color
+		http://shape-shift.en.softonic.com/iphone
+	Tangrams.
+		http://www.tangram-channel.com/tangram-puzzles/  
+		Baking cookies
+		http://roguebakery.com/blog/2012/12/14/holidaycookietime345/
+	Castlevania
+		Turn into a Bat
+	Shape Twister
+		https://itunes.apple.com/us/app/shape-twister/id962325879?mt=8
+	Letters on tiles to make words.
+		Banagrams
+	Shape Shifter:  2048 match shapes.
+		https://itunes.apple.com/us/app/shape-shifter-2048-geometric/id976926532?mt=8
+	Wolf Paperdoll
+		replace parts to make other animals
+	Vampire story
+		Dialogue tree
+	Jump
+		http://jayisgames.com/review/shape-shifter.php
+	Angus the Shapeshifter: Solve tangrams to change platformer jump and move.
+		http://www.igf.com/php-bin/entry2015.php?id=7505
+	Neopets Shapeshifter
+		http://www.neopets.com/ntimes/index.phtml?section=12441&week=163
+		http://www.neopets.com/games/game.phtml?game_id=151
+	Ostomachion:  Other shapes.  Square into unicorn.
+		http://www.maths.usyd.edu.au/ub/sums/puzzlehunt/2011/solutions/A1S4_Shapeshifter.html
+			https://en.wikipedia.org/wiki/Ostomachion
+	Tetris:  Move blocks.
+	Morph shape.
+	Altered Beast:  Transform into wolf or beast.
+		https://en.wikipedia.org/wiki/Shapeshifting
+	Drug Warz:  Trade coins.
+	Match shapes
+		http://www.download-games-online.com/shape-shifter.php
+	Rearrange columns and rows
+		http://mcpants.github.io/jquery.shapeshift/
+	bookworm
+		find the words to remove them to make a shape from the remaining letters.
+	Super collapse 3
+		http://www.ebay.com/itm/172157112185?rmvSB=true
+		pop the balloons to fit the target shape.
