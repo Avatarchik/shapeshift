@@ -13,11 +13,18 @@ public class Main : MainView
 		tangram.view = controller.view;
 	}
 
+	private void UpdateSilhouettePoint()
+	{
+		silhouettePoint = tangram.silhouette.point;
+		var gameObject = controller.view.graph["Developer"].children["SilhouettePoint"].self;
+		ViewUtil.SetPosition2D(gameObject, silhouettePoint);
+		ViewUtil.SetVisible(gameObject, !tangram.silhouette.isPerfect);
+	}
+
 	public override void Update()
 	{
 		base.Update();
 		tangram.Update();
-		silhouettePoint = tangram.silhouette.point;
-		ViewUtil.SetPosition2D(controller.view.graph["Developer"].children["SilhouettePoint"].self, silhouettePoint);
+		UpdateSilhouettePoint();
 	}
 }

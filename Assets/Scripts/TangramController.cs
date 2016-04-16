@@ -22,7 +22,7 @@ public class TangramController
 				ViewUtil.GetChildren(piecesParent)
 			);
 		}
-		if (silhouette.IsPerfect())
+		if (silhouette.Update())
 		{
 			model.OverlapSilhouette();
 		}

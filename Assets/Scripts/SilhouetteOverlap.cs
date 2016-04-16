@@ -25,6 +25,7 @@ public class SilhouetteOverlap
 	public float step = 0.25f;
 	public float half;
 	public Vector2 point = new Vector2();
+	public bool isPerfect;
 	private Collider2D[] silhouettes;
 	private Collider2D[] pieces;
 
@@ -97,9 +98,10 @@ public class SilhouetteOverlap
 		return isBothOverlap;
 	}
 
-	public bool IsPerfect()
+	public bool Update()
 	{
-		return BothOverlap(silhouettes, pieces)
+		isPerfect = BothOverlap(silhouettes, pieces)
 			&& BothOverlap(pieces, silhouettes);
+		return isPerfect;
 	}
 }
