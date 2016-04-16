@@ -12,6 +12,10 @@ public class TangramController
 	{
 		drag.isEnabled = model.isDragEnabled;
 		drag.Update();
+		model.isItemSelected = drag.isItemSelected;
+		if (null != drag.draggedObject && 0.0f != model.rotateDegrees) {
+			ViewUtil.Rotate(drag.draggedObject, model.rotateDegrees);
+		}
 	}
 }
 

@@ -11,7 +11,7 @@
 
 	public override void Update()
 	{
-		tangram.Update();
 		base.Update();
+		tangram.Update();
 	}
 }

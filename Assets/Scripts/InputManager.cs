@@ -7,7 +7,8 @@ public class InputManager
 	public GameObject draggedObject;
 	public bool isEnabled = false;
 	public bool isScale = false;
-	private bool draggingItem = false;
+	public bool isItemSelected = false;
+	private bool isDragging = false;
 	private Vector2 touchOffset;
    
 	public void Update()
@@ -22,7 +23,7 @@ public class InputManager
 		}
 		else
 		{
-			if (draggingItem)
+			if (isDragging)
 				DropItem();
 		}
 	}
@@ -41,7 +42,7 @@ public class InputManager
 	{
 		var inputPosition = CurrentTouchPosition;
 	 
-		if (draggingItem)
+		if (isDragging)
 		{
 			draggedObject.transform.position = inputPosition + touchOffset;
 		}
@@ -53,7 +54,8 @@ public class InputManager
 				var hit = touches[0];
 				if (hit.transform != null)
 				{
-					draggingItem = true;
+					isDragging = true;
+					isItemSelected = true;
 					draggedObject = hit.transform.gameObject;
 					touchOffset = (Vector2)hit.transform.position - inputPosition;
 					if (isScale)
@@ -76,7 +78,7 @@ public class InputManager
  
 	void DropItem()
 	{
-		draggingItem = false;
+		isDragging = false;
 		if (isScale)
 		{
 			draggedObject.transform.localScale = new Vector3(1f,1f,1f);

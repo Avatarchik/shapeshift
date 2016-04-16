@@ -4,6 +4,7 @@ public class Model : IModel
 {
 	private ViewModel view;
 	public bool isDragEnabled = true;
+	public bool isItemSelected = false;
 	public float rotateDegrees = 0.0f;
 	private int score;
 	private int scorePerPuzzle = 10;
@@ -35,13 +36,15 @@ public class Model : IModel
 	private void UpdateRotate()
 	{
 		rotateDegrees = 0.0f;
-		if ("LeftButton" == view.mouseDown) {
-			score += scorePerRotation;
-			rotateDegrees = -degreesPerRotation;
-		}
-		else if ("RightButton" == view.mouseDown) {
-			score += scorePerRotation;
-			rotateDegrees = degreesPerRotation;
+		if (isDragEnabled && isItemSelected) {
+			if ("LeftButton" == view.mouseDown) {
+				score += scorePerRotation;
+				rotateDegrees = degreesPerRotation;
+			}
+			else if ("RightButton" == view.mouseDown) {
+				score += scorePerRotation;
+				rotateDegrees = -degreesPerRotation;
+			}
 		}
 	}
 
