@@ -1,6 +1,38 @@
 Theme: Shapeshift, Game Jam for Ludum Dare 35, April 15-17 2016
 
 FEATURES
+	See 2 piecec.
+	See a 2-piece silhouette.
+	See no seam in silhouette.
+		Overscale silhouette.  
+		Color transform.
+	Click and drag piece.
+	Text at bottom or top.
+	Highlight the selected piece.
+	Overlay silhouette perimeter to see pieces.  Or pieces are translucent.
+	Score 100 for fitting pieces into silhouette.
+		Check overlaps point on grid.
+	Click button to rotate at bottom.  Example Tangram by Magmamobile.
+	Count down rotations beside rotate button.
+	Menu button at bottom.
+	At menu overview the silhouettes.
+	From menu, click rectangle of puzzle:  zoom camera into that.
+	Tutor 2 pieces.
+	Show the active shape.
+	Highlight the completed silhouettes.
+	At menu, restart button at bottom.
+	Snap rotation to 1/8th.
+	Snap move to grid.
+	See grid.
+	Jennifer plays.
+	Upload to Ludum Dare.
+	Illustrate colors and texture.  Example Montezuma Puzzle 2.
+	Tangram block font.
+	Fit.  Hear.
+	Hear pickup and drop.  Example Montezuma Puzzle 2.
+	Hear rotation.
+	Illustrate background.
+	Bevel silhouette.  Example:  Montezuma Puzzle 2.
 
 TODO
 
@@ -22,6 +54,9 @@ How can Jennifer enjoy one-minute?
 				Score fewest number of rotations.
 				Select any number of items to rotate.  Pivot.
 				3x3 grid of icons.
+	Montezuma Puzzle 2:  slide pieces.  No rotation. 
+		Count moves.
+			Align puzzles.
 	Start with fewer pieces than 7.
 		http://www.jumpintoabook.com/2013/01/grandfather-tangs-story-storytelling-with-tangrams/
 	Shapeshifter Puzzles:  Geometric dissection with 4 pieces.
@@ -32,7 +67,7 @@ How can Jennifer enjoy one-minute?
 		https://play.google.com/store/apps/details?id=com.CogswellCollege.TangramJam
 	Tangram change animals
 		http://www.jumpintoabook.com/2013/01/grandfather-tangs-story-storytelling-with-tangrams/
-	Tangram
+	Tangram by MagmaMobile
 		Rotate button at bottom
 		https://play.google.com/store/apps/details?id=com.magmamobile.game.Tangram
 	Tangrams.
@@ -101,6 +136,16 @@ How can Jennifer enjoy one-minute?
 		http://www.ebay.com/itm/172157112185?rmvSB=true
 	pop the balloons to fit the target shape.
 
+NAME BRAINSTORM
+
+	Tangram Shapeshifter
+	Shapeshifter Puzzle
+	Puzzleshift
+	Tangram Twist
+	Tangram Twister
+	Tangram Turn
+	Puzzle Rotate
+	Puzzle Turn
 
 
 Fri 04/15/2016 
