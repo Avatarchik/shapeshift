@@ -8,6 +8,53 @@ Address bar
 
 Unity Web GL loading bar.
 
-...
+Landscape layout 600x400.
 
-?
+	TANGRAM SHAPESHIFTER
+	Shift into all the shapes.
+	Each rotation costs 1 point.
+	Fitting an animal adds 100 points.
+
+Fox in the background.
+
+	Fox
+
+	SCORE 100
+
+Button with circle back arrow.
+
+3x2 grid of 3 foxes and 3 cats.
+
+The shapes are in the form of a fox at top left.
+
+	Which animal can you shift into with few rotations?
+
+Jennifer taps on the next fox.
+
+	Fairy fox
+
+The previous fox remains.
+
+A silhouette overlays the next fox.
+
+Jennifer rotates the pieces 5 times.
+
+There are buttons at bottom with eighth-turn arrows on them.
+
+	SCORE 95
+
+Jennifer makes the fox.
+
+	SCORE 195
+
+Jennifer taps circle back arrow.
+
+	Which animal can you shift into with few rotations?
+
+The fox glows.  The previous fox glows not as brightly.
+
+The other fox and three cats are still dark.
+
+Jennifer continues for all six.
+
+
