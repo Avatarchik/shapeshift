@@ -5,7 +5,7 @@ public class TangramController
 
 	public void Start()
 	{
-		drag.snapSize = 0.25f;
+		drag.snapSize = 0.05f;
 		model = new Model();
 	}
 

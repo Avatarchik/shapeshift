@@ -165,8 +165,9 @@ http://docs.unity3d.com/ScriptReference/Physics2D.IsTouching.html
 Sat 04/16/2016 
 10:40
 
+Grid cell length equal to quarter of unit triangle's width.
 All silhouettes overlapped:  True.
-For each point in snapping grid:
+For each point in overlap grid:
 	If silhouette colliders overlap point:
 		If a piece collider does not overlap that point:
 			Return all silhouettes are not overlapped.
