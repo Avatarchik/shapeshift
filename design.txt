@@ -1,15 +1,16 @@
 Theme: Shapeshift, Game Jam for Ludum Dare 35, April 15-17 2016
 
 FEATURES
-	See 2 pieces.
-	See a 2-piece silhouette.
+	See pieces.
+	See a silhouette.
 	See no seam in silhouette.
 		Overscale silhouette.  
 		Color transform.
-	Click and drag piece.
-	Text at bottom or top.
-	Highlight the selected piece.
 	Overlay silhouette perimeter to see pieces.  Or pieces are translucent.
+	Click and drag piece.
+	Text at bottom.
+
+TODO
 	Score 10 for fitting pieces into silhouette.
 		Check overlaps point on grid.
 	Click button to rotate at bottom.  Example Tangram by Magmamobile.
@@ -26,6 +27,7 @@ FEATURES
 	See grid.
 	Jennifer plays.
 	Upload to Ludum Dare.
+	Highlight the selected piece.
 	Constrain dragging to play area.
 	Illustrate colors and texture.  Example Montezuma Puzzle 2.
 	Tangram block font.
@@ -34,8 +36,6 @@ FEATURES
 	Hear rotation.
 	Illustrate background.
 	Bevel silhouette.  Example:  Montezuma Puzzle 2.
-
-TODO
 
 REFERENCE GAME BRAINSTORM
 
