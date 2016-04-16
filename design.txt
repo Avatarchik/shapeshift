@@ -175,6 +175,8 @@ For each point in overlap grid:
 		If a piece collider does overlap that point:
 			Return all silhouettes are not overlapped.
 
+To visualize, place small red square at each point not overlapping on a sorting layer in front of moving pieces.
+
 This depends on collider polygons being more precise than the snapping grid and silhouette oversizing.
 
 Would also want to only enable drag and drop of pieces layer.

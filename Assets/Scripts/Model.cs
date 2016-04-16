@@ -5,6 +5,7 @@ public class Model : IModel
 	private ViewModel view;
 	public bool isDragEnabled = true;
 	public bool isItemSelected = false;
+	public bool isOverlapSilhouette = false;
 	public float rotateDegrees = 0.0f;
 	private int score;
 	private int scorePerPuzzle = 10;
@@ -45,6 +46,14 @@ public class Model : IModel
 				score += scorePerRotation;
 				rotateDegrees = -degreesPerRotation;
 			}
+		}
+	}
+
+	public void OverlapSilhouette()
+	{
+		if (!isOverlapSilhouette) {
+			isOverlapSilhouette = true;
+			score += scorePerPuzzle;
 		}
 	}
 
