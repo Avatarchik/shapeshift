@@ -11,10 +11,11 @@ FEATURES
 	Text at bottom.
 
 TODO
+	Click button to rotate selected.  
+		Example of button of screen in Tangram by Magmamobile.
+	Count down rotations in score beside rotate button.
 	Score 10 for fitting pieces into silhouette.
 		Check overlaps point on grid.
-	Click button to rotate at bottom.  Example Tangram by Magmamobile.
-	Count down rotations beside rotate button.
 	Menu button at bottom.
 	At menu overview the silhouettes.
 	From menu, click rectangle of puzzle:  zoom camera into that.

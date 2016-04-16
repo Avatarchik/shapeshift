@@ -1,19 +1,17 @@
 ﻿public class Main : MainView
 {
-	private InputManager drag = new InputManager();
-	private Model model;
+	private TangramController tangram = new TangramController();
 
 	public override void Start()
 	{
-		model = new Model();
-		controller.SetModel(model);
+		tangram.Start();
+		controller.SetModel(tangram.model);
 		base.Start();
 	}
 
 	public override void Update()
 	{
-		drag.isEnabled = model.isDragEnabled;
-		drag.Update();
+		tangram.Update();
 		base.Update();
 	}
 }
