@@ -139,6 +139,12 @@ How can Jennifer enjoy one-minute?
 		http://www.ebay.com/itm/172157112185?rmvSB=true
 	pop the balloons to fit the target shape.
 
+REFERENCE ART
+
+	Indonesian shadow puppet play
+		Light the fire behind the screen.
+		Bright particles of the environment of the animal.
+
 NAME BRAINSTORM
 
 	Tangram Shapeshifter
@@ -183,3 +189,9 @@ Would also want to only enable drag and drop of pieces layer.
 
 file:///C:/Program%20Files/Unity/Editor/Data/Documentation/en/ScriptReference/Physics2D.OverlapPointNonAlloc.html
 
+Sat 04/16/2016 
+13:42
+
+Another approach: trigger enter, exit... does not exactly work if the pieces overlap.
+
+When piece trigger enters

@@ -2,11 +2,14 @@ using System.Collections.Generic;  // Dictionary
 
 public class Model : IModel
 {
-	private ViewModel view;
+	public ViewModel view;
 	public bool isDragEnabled = true;
 	public bool isItemSelected = false;
 	public bool isOverlapSilhouette = false;
 	public float rotateDegrees = 0.0f;
+	public string piecesParent = "Pieces";
+	public string silhouetteParent = "Silhouette";
+	public string levelParent = "Level_Example";
 	private int score;
 	private int scorePerPuzzle = 10;
 	private int scorePerRotation = -1;
@@ -27,9 +30,20 @@ public class Model : IModel
 			"RightButton",
 			"MenuButton"
 		};
-		view.graph["Canvas"] = new Dictionary<string, object>(){
-			{"Panel", new Dictionary<string, object>(){
-				{"ScoreText", null}
+		view.graph = new Dictionary<string, object>(){
+			{"Canvas", new Dictionary<string, object>(){
+				{"Panel", new Dictionary<string, object>(){
+					{"ScoreText", null}
+				}}
+			}},
+			{"Levels", new Dictionary<string, object>(){
+				{"Level_Example", new Dictionary<string, object>(){
+					{"Silhouette", null},
+					{"Pieces", null}
+				}}
+			}},
+			{"Developer", new Dictionary<string, object>(){
+				{"SilhouettePoint", null}
 			}}
 		};
 	}
