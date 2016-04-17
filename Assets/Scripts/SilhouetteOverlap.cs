@@ -30,7 +30,6 @@ public class SilhouetteOverlap
 	private Collider2D[] silhouettes;
 	private Collider2D[] pieces;
 
-	private bool isBothOverlap;
 	private int a;
 	private int b;
 	private int aLength;
@@ -76,9 +75,10 @@ public class SilhouetteOverlap
 	// 			Return all A are not overlapped.
 	// Variables are members to avoid construction overhead.
 	// Inset by margin.
-	private bool BothOverlap(Collider2D[] A, Collider2D[] B)
+	private bool IsAllOverlap(Collider2D[] A, Collider2D[] B)
 	{
-		isBothOverlap = true;
+		bool isAllOverlap;
+		isAllOverlap = true;
 		aLength = A.Length;
 		bLength = B.Length;
 		for (a = 0; a < aLength; a++) {
@@ -90,30 +90,62 @@ public class SilhouetteOverlap
 				for (y = min.y + margin; y <= max.y - margin; y += step) {
 					point.y = y;
 					if (colliderA.OverlapPoint(point)) {
-						isBothOverlap = false;
+						isAllOverlap = false;
 						for (b = 0; b < bLength; b++) {
 							colliderB = B[b];
 							if (colliderB != colliderA && colliderB.OverlapPoint(point)) {
-								isBothOverlap = true;
+								isAllOverlap = true;
 								break;
 							}
 						}
-						if (!isBothOverlap) {
-							return isBothOverlap;
+						if (!isAllOverlap) {
+							return isAllOverlap;
 						}
 					}
 				}
 			}
 		}
-		return isBothOverlap;
+		return isAllOverlap;
+	}
+
+	// For each point in each A collider's bounding box:
+	// 	If A colliders overlap point:
+	// 		If no B collider overlaps that point:
+	// 			Return all A are not overlapped.
+	// Variables are members to avoid construction overhead.
+	// Inset by margin.
+	private bool IsAnyOverlap(Collider2D[] A, Collider2D[] B)
+	{
+		bool isAnyOverlap = false;
+		aLength = A.Length;
+		bLength = B.Length;
+		for (a = 0; a < aLength; a++) {
+			colliderA = A[a];
+			min = colliderA.bounds.min;
+			max = colliderA.bounds.max;
+			for (x = min.x + margin; x <= max.x - margin; x += step) {
+				point.x = x;
+				for (y = min.y + margin; y <= max.y - margin; y += step) {
+					point.y = y;
+					if (colliderA.OverlapPoint(point)) {
+						for (b = 0; b < bLength; b++) {
+							colliderB = B[b];
+							if (colliderB != colliderA && colliderB.OverlapPoint(point)) {
+								isAnyOverlap = true;
+								return isAnyOverlap;
+							}
+						}
+					}
+				}
+			}
+		}
+		return isAnyOverlap;
 	}
 
 	public bool Update()
 	{
-		isPerfect = // BothOverlap(silhouettes, pieces)
-			// && 
-			BothOverlap(pieces, silhouettes)
-			&& !BothOverlap(pieces, pieces);
+		isPerfect = IsAllOverlap(pieces, silhouettes)
+			&& !IsAnyOverlap(pieces, pieces);
 		return isPerfect;
 	}
 }
