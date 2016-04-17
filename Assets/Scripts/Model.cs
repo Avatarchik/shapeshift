@@ -14,11 +14,13 @@ public class Model : IModel
 	public string pieceSelectedParent = "PieceSelected";
 	public string silhouetteParent = "Silhouette";
 	public string levelsParent = "Levels";
-	public string levelState = "Level_0";
-	public string levelParent = "Level_0";
+	public string levelState;
+	public string levelParent;
 	public string[] piecesLayers = new string[]{"Pieces"};
 	public string[] canvas;
 	public string[] screen;
+	private int levelCount = 3;
+	private Dictionary<string, object> levels;
 	private int score;
 	private int scorePerPuzzle = 10;
 	private int scorePerRotation = -1;
@@ -33,18 +35,28 @@ public class Model : IModel
 		view = viewModel;
 	}
 
+	private void SetupLevels(int buttonOffset)
+	{
+		levels = (Dictionary<string, object>) view.graph[screenParent];
+		levels = (Dictionary<string, object>) levels[levelsParent];
+		for (int level = 0; level < levelCount; level++) {
+			string levelName = "Level_" + level;
+			view.buttons[level + buttonOffset] = levelName + "/" + levelName;
+			isOverlaps[levelName] = false;
+			levels[levelName] =
+				new Dictionary<string, object>(){
+					{"Silhouette", null},
+					{"Feedback", null}
+				};
+		}
+		SetState("Level_0");
+	}
+
 	public void Start()
 	{
 		score = 0;
 		screen = new string[]{screenParent};
 		canvas = new string[]{"Canvas"};
-		view.buttons = new string[] {
-			"LeftButton",
-			"RightButton",
-			"MenuButton",
-			"Level_0_Button",
-			"Level_1_Button"
-		};
 		view.graph = new Dictionary<string, object>(){
 			{"Canvas", new Dictionary<string, object>(){
 				{"ScoreText", null},
@@ -55,26 +67,23 @@ public class Model : IModel
 			{"World", new Dictionary<string, object>(){
 				{"Levels", new Dictionary<string, object>(){
 					{"Pieces", null},
-					{"PieceSelected", null},
-					{"Level_0", new Dictionary<string, object>(){
-						{"Silhouette", null},
-						{"Feedback", null}
-					}},
-					{"Level_1", new Dictionary<string, object>(){
-						{"Silhouette", null},
-						{"Feedback", null}
-					}}
+					{"PieceSelected", null}
 				}}
 			}},
 			{"Developer", new Dictionary<string, object>(){
 				{"SilhouettePoint", null}
 			}}
 		};
-		isOverlaps = new Dictionary<string, bool>(){
-			{"Level_0", false},
-			{"Level_1", false}
-		};
-		SetState("Level_0");
+		isOverlaps = new Dictionary<string, bool>();
+
+		int hudButtonCount = 3;
+		int buttonCount = hudButtonCount + levelCount;
+		view.buttons = new string[buttonCount];
+		string[] buttons = view.buttons;
+		buttons[0] = "LeftButton";
+		buttons[1] = "RightButton";
+		buttons[2] = "MenuButton";
+		SetupLevels(hudButtonCount);
 	}
 
 	private void UpdateRotate()
@@ -134,11 +143,8 @@ public class Model : IModel
 	private void UpdateMenu()
 	{
 		if (isMenu) {
-			if ("Level_0_Button" == view.mouseDown) {
-				SetState("Level_0");
-			}
-			else if ("Level_1_Button" == view.mouseDown) {
-				SetState("Level_1");
+			if (levels.ContainsKey(view.mouseDown)) {
+				SetState(view.mouseDown);
 			}
 		}
 		else {

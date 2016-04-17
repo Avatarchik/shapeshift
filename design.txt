@@ -36,13 +36,13 @@ TODO
 	Jennifer sees rotate buttons have clockwise and counterclockwise arrows.
 	16 silhouettes.
 	Constrain dragging to play area.
+	Fit.  Hear.
+	Hear pickup and drop.  Example Montezuma Puzzle 2.
+	Hear rotation.
 	Snap move to grid.
 		Snap silhouette to grid.
 	Illustrate colors and texture.  Example Montezuma Puzzle 2.
 	Tangram block font.
-	Fit.  Hear.
-	Hear pickup and drop.  Example Montezuma Puzzle 2.
-	Hear rotation.
 	At menu, restart button at bottom.
 	Illustrate background.
 	Bevel silhouette.  Example:  Montezuma Puzzle 2.
@@ -50,6 +50,9 @@ TODO
 	Address scene graph by strings or object notation, such as SetState("Main/Levels", "begin");
 		Trim addresses:
 			var pieceSelected = view.graph[model.screenParent].children[model.levelsParent].children[model.pieceSelectedParent].self);
+	Avoid casting tedium:
+		levels = (Dictionary<string, object>) view.graph[screenParent];
+		levels = (Dictionary<string, object>) levels[levelsParent];
 
 REFERENCE GAME BRAINSTORM
 
