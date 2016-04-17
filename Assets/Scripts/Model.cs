@@ -24,7 +24,7 @@ public class Model : IModel
 	private string[] scoreText = new string[]{
 		"Canvas", "Panel", "ScoreText"};
 	private string[] messageText = new string[]{
-		"Canvas", "Pane", "MessageText"};
+		"Canvas", "Panel", "MessageText"};
 
 	public void SetViewModel(ViewModel viewModel)
 	{
@@ -45,9 +45,9 @@ public class Model : IModel
 		view.graph = new Dictionary<string, object>(){
 			{"Canvas", new Dictionary<string, object>(){
 				{"Panel", new Dictionary<string, object>(){
-					{"ScoreText", null}
-				}},
-				{"MessageText", null}
+					{"ScoreText", null},
+					{"MessageText", null}
+				}}
 			}},
 			{"World", new Dictionary<string, object>(){
 				{"Levels", new Dictionary<string, object>(){
@@ -99,10 +99,10 @@ public class Model : IModel
 	{
 		levelState = state;
 		levelParent = state;
-		view.SetState(screen, levelState);
 		isMenu = "Menu" == levelState;
 		isDragEnabled = !isMenu;
 		isOverlapSilhouette = false;
+		view.SetState(screen, levelState);
 		if (isMenu) {
 			view.SetText(messageText,
 				"To score high, pick a new shape with few rotations."

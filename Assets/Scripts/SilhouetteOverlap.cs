@@ -24,7 +24,7 @@ public class SilhouetteOverlap
 {
 	public float step = 0.25f;
 			// 0.5f;
-	public float half;
+	public float margin;
 	public Vector2 point = new Vector2();
 	public bool isPerfect;
 	private Collider2D[] silhouettes;
@@ -55,7 +55,10 @@ public class SilhouetteOverlap
 
 	public void Setup(GameObject[] silhouetteObjects, GameObject[] pieceObjects)
 	{
-		half = 0.5f * step;
+		margin = 
+			0.25f * step;
+			// 0.5f * step;
+			// step;
 		int index;
 		silhouettes = new Collider2D[silhouetteObjects.Length];
 		for (index = 0; index < silhouetteObjects.Length; index++) {
@@ -72,7 +75,7 @@ public class SilhouetteOverlap
 	// 		If no B collider overlaps that point:
 	// 			Return all A are not overlapped.
 	// Variables are members to avoid construction overhead.
-	// Offset half a step.
+	// Inset by margin.
 	private bool BothOverlap(Collider2D[] A, Collider2D[] B)
 	{
 		isBothOverlap = true;
@@ -82,15 +85,15 @@ public class SilhouetteOverlap
 			colliderA = A[a];
 			min = colliderA.bounds.min;
 			max = colliderA.bounds.max;
-			for (x = min.x + half; x <= max.x - half; x += step) {
+			for (x = min.x + margin; x <= max.x - margin; x += step) {
 				point.x = x;
-				for (y = min.y + half; y <= max.y - half; y += step) {
+				for (y = min.y + margin; y <= max.y - margin; y += step) {
 					point.y = y;
 					if (colliderA.OverlapPoint(point)) {
 						isBothOverlap = false;
 						for (b = 0; b < bLength; b++) {
 							colliderB = B[b];
-							if (colliderB.OverlapPoint(point)) {
+							if (colliderB != colliderA && colliderB.OverlapPoint(point)) {
 								isBothOverlap = true;
 								break;
 							}
@@ -107,8 +110,10 @@ public class SilhouetteOverlap
 
 	public bool Update()
 	{
-		isPerfect = BothOverlap(silhouettes, pieces)
-			&& BothOverlap(pieces, silhouettes);
+		isPerfect = // BothOverlap(silhouettes, pieces)
+			// && 
+			BothOverlap(pieces, silhouettes)
+			&& !BothOverlap(pieces, pieces);
 		return isPerfect;
 	}
 }

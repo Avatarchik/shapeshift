@@ -18,17 +18,21 @@ FEATURES
 	Menu button at bottom.
 	At menu overview 4 silhouettes.
 	From menu, click rectangle of puzzle:  zoom camera into that.
+	Select second puzzle.  See same pieces.
+	Correct without being pixel perfect.
+	Jennifer played 2 puzzles with a little guidance.
 
 TODO
-	Select second puzzle.  See same pieces.
-	Tutor 2 pieces.
-	Show the active shape.
-	Highlight the completed silhouettes.
-	At menu, restart button at bottom.
-	See grid.
-	Jennifer plays.
+	Fit inside animal.  Jennifer sees particles.  Text:  Return to menu.
+	Jennifer sees highlight on the selected piece that would rotate.
+	Jennifer sees rotate buttons have clockwise and counterclockwise arrows.
+	Jennifer sees which piece is selected.
+	Jennifer sees 4 silhouettes, with clear order.
+	Jennifer plays 4 puzzles without guidance.
+	9 silhouettes.
+	Highlight the completed silhouettes.  Particles repeat.
 	Upload to Ludum Dare.
-	Highlight the selected piece.
+	At menu, restart button at bottom.
 	Constrain dragging to play area.
 	Snap move to grid.
 		Snap silhouette to grid.
@@ -39,6 +43,7 @@ TODO
 	Hear rotation.
 	Illustrate background.
 	Bevel silhouette.  Example:  Montezuma Puzzle 2.
+	See grid.
 	Address scene graph by strings, such as SetState("Main/Levels", "begin");
 
 REFERENCE GAME BRAINSTORM
@@ -81,6 +86,8 @@ How can Jennifer enjoy one-minute?
 		http://roguebakery.com/blog/2012/12/14/holidaycookietime345/
 		Montessori Tangrams
 			https://play.google.com/store/apps/details?id=com.earlystart.android.montessoritangramforpreschoolers
+	Tangram at Andkon Arcade
+		http://www.andkon.com/arcade/puzzle/tangram/
 	Other shapes of geometric dissections
 		http://www.mathematische-basteleien.de/tangrams.htm
 		Pictures in the shapes to be assembled
@@ -197,3 +204,22 @@ Sat 04/16/2016
 Another approach: trigger enter, exit... does not exactly work if the pieces overlap.
 
 When piece trigger enters
+
+
+
+Sat 04/16/2016 
+20:16
+
+
+	Snap or correct without being precise.
+
+Snap:
+	Snap to edge.
+	If rotated, then snap to rotated coordinates.
+
+Tolerance:
+	Unit triangle colliders.
+	Bitmap comparison.
+	Points at inset colliders.
+
+	Pieces are inside a generous silhouette and not overlapping other pieces.

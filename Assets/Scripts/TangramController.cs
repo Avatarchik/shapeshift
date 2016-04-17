@@ -9,7 +9,7 @@ public class TangramController
 
 	public void Start()
 	{
-		drag.snapSize = 0.05f;
+		drag.snapSize = 0.1f;  // 0.05f;
 		drag.SetLayerMask(model.piecesLayers);
 	}
 
