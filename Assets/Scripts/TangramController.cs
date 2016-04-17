@@ -45,6 +45,14 @@ public class TangramController
 			model.isDragEnabled && drag.isItemSelected);
 	}
 
+	private void UpdateSilhouettePoint()
+	{
+		var gameObject = view.graph["Developer"].children["SilhouettePoint"].self;
+		ViewUtil.SetPosition(gameObject, silhouette.point);
+		bool isVisible = model.isDragEnabled && !silhouette.isPerfect && !model.isMenu;
+		ViewUtil.SetVisible(gameObject, isVisible);
+	}
+
 	private void UpdateDrag()
 	{
 		drag.Update();
@@ -58,7 +66,8 @@ public class TangramController
 	public void Update()
 	{
 		UpdateSilhouette();
-		if (!model.isMenu) {
+		UpdateSilhouettePoint();
+		if (!model.isMenu && !model.wasComplete()) {
 			UpdateDrag();
 			ViewUtil.CenterOnScreen(view.graph[model.screenParent].children[model.levelsParent].children[model.piecesParent].self);
 		}

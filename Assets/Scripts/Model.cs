@@ -101,10 +101,16 @@ public class Model : IModel
 		}
 	}
 
+	public bool wasComplete()
+	{
+		return isOverlaps[levelParent];
+	}
+
 	public void OverlapSilhouette()
 	{
-		if (!isOverlapSilhouette && !isOverlaps[levelParent]) {
+		if (!isOverlapSilhouette && !wasComplete()) {
 			isOverlapSilhouette = true;
+			isDragEnabled = false;
 			score += scorePerPuzzle;
 			isOverlaps[levelParent] = true;
 			string message = "Click MENU to shapeshift into your next animal.";
@@ -130,11 +136,11 @@ public class Model : IModel
 			message = "To score high, shapeshift into similar animals first.";
 		}
 		else {
-			if (isOverlaps[levelParent]) {
+			if (wasComplete()) {
 				message = "You already shapeshifted into this animal.";
 			}
 			else {
-				message = "Shapeshift into this animal: +10 points";
+				message = "Shapeshift into this animal:\n+10 points";
 			}
 		}
 		view.SetText(messageText, message);
