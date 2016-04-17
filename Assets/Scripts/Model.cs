@@ -17,13 +17,14 @@ public class Model : IModel
 	public string levelState = "Level_0";
 	public string levelParent = "Level_0";
 	public string[] piecesLayers = new string[]{"Pieces"};
+	public string[] canvas;
 	public string[] screen;
 	private int score;
 	private int scorePerPuzzle = 10;
 	private int scorePerRotation = -1;
 	private float degreesPerRotation = 45.0f;
 	private string[] scoreText = new string[]{
-		"Canvas", "Panel", "ScoreText"};
+		"Canvas", "ScoreText"};
 	private string[] messageText = new string[]{
 		"Canvas", "Panel", "MessageText"};
 
@@ -34,8 +35,9 @@ public class Model : IModel
 
 	public void Start()
 	{
-		score = scorePerPuzzle;
-		screen = new string[]{"World"};
+		score = 0;
+		screen = new string[]{screenParent};
+		canvas = new string[]{"Canvas"};
 		view.buttons = new string[] {
 			"LeftButton",
 			"RightButton",
@@ -45,8 +47,8 @@ public class Model : IModel
 		};
 		view.graph = new Dictionary<string, object>(){
 			{"Canvas", new Dictionary<string, object>(){
+				{"ScoreText", null},
 				{"Panel", new Dictionary<string, object>(){
-					{"ScoreText", null},
 					{"MessageText", null}
 				}}
 			}},
@@ -96,7 +98,7 @@ public class Model : IModel
 			isOverlapSilhouette = true;
 			score += scorePerPuzzle;
 			isOverlaps[levelParent] = true;
-			string message = "Click MENU to shift into your next shape.";
+			string message = "Click MENU to shapeshift into your next animal.";
 			view.SetText(messageText, message);
 			string[] feedback = new string[]{
 				screenParent, levelsParent, levelParent, "Feedback"};
@@ -112,12 +114,19 @@ public class Model : IModel
 		isDragEnabled = !isMenu;
 		isOverlapSilhouette = false;
 		view.SetState(screen, levelState);
+		string canvasState = isMenu ? levelState : "None";
+		view.SetState(canvas, canvasState);
 		string message;
 		if (isMenu) {
-			message = "To score high, pick a similar shape.";
+			message = "To score high, shapeshift into similar animals first.";
 		}
 		else {
-			message = "Fit animal: +10 points";
+			if (isOverlaps[levelParent]) {
+				message = "You already shapeshifted into this animal.";
+			}
+			else {
+				message = "Shapeshift into this animal: +10 points";
+			}
 		}
 		view.SetText(messageText, message);
 	}
