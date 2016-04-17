@@ -22,9 +22,9 @@ FEATURES
 	Correct without being pixel perfect.
 	Jennifer played 2 puzzles with a little guidance.
 	Fit inside animal.  Jennifer sees Text:  Return to menu.
+	Fit inside animal.  Jennifer sees background change.  particles.
 
 TODO
-	Fit inside animal.  Jennifer sees background change.  particles.
 	Jennifer sees highlight on the selected piece that would rotate.
 	Jennifer sees rotate buttons have clockwise and counterclockwise arrows.
 	Jennifer sees 4 silhouettes, with clear order.
@@ -230,3 +230,10 @@ Tolerance:
 	Points at inset colliders.
 
 	Pieces are inside a generous silhouette and not overlapping other pieces.
+
+
+Sun 04/17/2016 
+08:07
+
+CE7224FF
+773D08FF

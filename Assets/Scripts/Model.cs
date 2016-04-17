@@ -53,10 +53,12 @@ public class Model : IModel
 				{"Levels", new Dictionary<string, object>(){
 					{"Pieces", null},
 					{"Level_0", new Dictionary<string, object>(){
-						{"Silhouette", null}
+						{"Silhouette", null},
+						{"Feedback", null}
 					}},
 					{"Level_1", new Dictionary<string, object>(){
-						{"Silhouette", null}
+						{"Silhouette", null},
+						{"Feedback", null}
 					}}
 				}}
 			}},
@@ -94,6 +96,9 @@ public class Model : IModel
 			isOverlaps[levelParent] = true;
 			string message = "Click MENU to shift into your next shape.";
 			view.SetText(messageText, message);
+			string[] feedback = new string[]{
+				screenParent, levelsParent, levelParent, "Feedback"};
+			view.SetState(feedback, "Correct");
 		}
 	}
 
@@ -110,8 +115,7 @@ public class Model : IModel
 			message = "To score high, pick a new shape with few rotations.";
 		}
 		else {
-			message = "Fit animal: +10 points"
-				+ "\nRotate: -1 point";
+			message = "Fit animal: +10 points";
 		}
 		view.SetText(messageText, message);
 	}
