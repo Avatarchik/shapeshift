@@ -19,7 +19,8 @@ public class Main : MainView
 		silhouettePoint = tangram.silhouette.point;
 		var gameObject = controller.view.graph["Developer"].children["SilhouettePoint"].self;
 		ViewUtil.SetPosition2D(gameObject, silhouettePoint);
-		ViewUtil.SetVisible(gameObject, model.isDragEnabled && !tangram.silhouette.isPerfect);
+		bool isVisible = tangram.model.isDragEnabled && !tangram.silhouette.isPerfect;
+		ViewUtil.SetVisible(gameObject, isVisible);
 	}
 
 	public override void Update()

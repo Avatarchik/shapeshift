@@ -36,7 +36,8 @@ public class Model : IModel
 			"LeftButton",
 			"RightButton",
 			"MenuButton",
-			"LevelBuffaloButton"
+			"LevelBuffaloButton",
+			"LevelFoxButton"
 		};
 		view.graph = new Dictionary<string, object>(){
 			{"Canvas", new Dictionary<string, object>(){
@@ -85,6 +86,7 @@ public class Model : IModel
 	private void SetState(string state)
 	{
 		levelState = state;
+		levelParent = state;
 		view.SetState(screen, levelState);
 		isMenu = "Menu" == levelState;
 		isDragEnabled = !isMenu;
@@ -95,6 +97,9 @@ public class Model : IModel
 		if (isMenu) {
 			if ("LevelBuffaloButton" == view.mouseDown) {
 				SetState("LevelBuffalo");
+			}
+			else if ("LevelFoxButton" == view.mouseDown) {
+				SetState("LevelFox");
 			}
 		}
 		else {
