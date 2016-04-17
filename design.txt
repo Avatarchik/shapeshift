@@ -21,16 +21,16 @@ FEATURES
 	Select second puzzle.  See same pieces.
 	Correct without being pixel perfect.
 	Jennifer played 2 puzzles with a little guidance.
+	Fit inside animal.  Jennifer sees Text:  Return to menu.
 
 TODO
-	Fit inside animal.  Jennifer sees particles.  Text:  Return to menu.
+	Fit inside animal.  Jennifer sees background change.  particles.
 	Jennifer sees highlight on the selected piece that would rotate.
 	Jennifer sees rotate buttons have clockwise and counterclockwise arrows.
-	Jennifer sees which piece is selected.
 	Jennifer sees 4 silhouettes, with clear order.
+	Highlight the completed silhouettes.  Particles repeat.
 	Jennifer plays 4 puzzles without guidance.
 	9 silhouettes.
-	Highlight the completed silhouettes.  Particles repeat.
 	Upload to Ludum Dare.
 	At menu, restart button at bottom.
 	Constrain dragging to play area.
@@ -157,6 +157,7 @@ REFERENCE ART
 NAME BRAINSTORM
 
 	Tangram Shapeshifter
+	Tangram Shapeshift
 	Shapeshifter Puzzle
 	Puzzleshift
 	Tangram Twist
@@ -164,6 +165,11 @@ NAME BRAINSTORM
 	Tangram Turn
 	Puzzle Rotate
 	Puzzle Turn
+	Metagram
+	Metamorphasis
+	Tale of Tang
+	Tangram Tale
+	Tangram Transformer
 
 
 JOURNAL

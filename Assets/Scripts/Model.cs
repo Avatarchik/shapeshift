@@ -13,8 +13,8 @@ public class Model : IModel
 	public string piecesParent = "Pieces";
 	public string silhouetteParent = "Silhouette";
 	public string levelsParent = "Levels";
-	public string levelState = "LevelBuffalo";
-	public string levelParent = "LevelBuffalo";
+	public string levelState = "Level_0";
+	public string levelParent = "Level_0";
 	public string[] piecesLayers = new string[]{"Pieces"};
 	public string[] screen;
 	private int score;
@@ -39,8 +39,8 @@ public class Model : IModel
 			"LeftButton",
 			"RightButton",
 			"MenuButton",
-			"LevelBuffaloButton",
-			"LevelFoxButton"
+			"Level_0_Button",
+			"Level_1_Button"
 		};
 		view.graph = new Dictionary<string, object>(){
 			{"Canvas", new Dictionary<string, object>(){
@@ -52,10 +52,10 @@ public class Model : IModel
 			{"World", new Dictionary<string, object>(){
 				{"Levels", new Dictionary<string, object>(){
 					{"Pieces", null},
-					{"LevelBuffalo", new Dictionary<string, object>(){
+					{"Level_0", new Dictionary<string, object>(){
 						{"Silhouette", null}
 					}},
-					{"LevelFox", new Dictionary<string, object>(){
+					{"Level_1", new Dictionary<string, object>(){
 						{"Silhouette", null}
 					}}
 				}}
@@ -65,10 +65,10 @@ public class Model : IModel
 			}}
 		};
 		isOverlaps = new Dictionary<string, bool>(){
-			{"LevelBuffalo", false},
-			{"LevelFox", false}
+			{"Level_0", false},
+			{"Level_1", false}
 		};
-		SetState("LevelBuffalo");
+		SetState("Level_0");
 	}
 
 	private void UpdateRotate()
@@ -92,6 +92,8 @@ public class Model : IModel
 			isOverlapSilhouette = true;
 			score += scorePerPuzzle;
 			isOverlaps[levelParent] = true;
+			string message = "Click MENU to shift into your next shape.";
+			view.SetText(messageText, message);
 		}
 	}
 
@@ -103,27 +105,25 @@ public class Model : IModel
 		isDragEnabled = !isMenu;
 		isOverlapSilhouette = false;
 		view.SetState(screen, levelState);
+		string message;
 		if (isMenu) {
-			view.SetText(messageText,
-				"To score high, pick a new shape with few rotations."
-				);
+			message = "To score high, pick a new shape with few rotations.";
 		}
 		else {
-			view.SetText(messageText,
-				"Fit animal: +10 points"
-				+ "\nRotate: -1 point"
-				);
+			message = "Fit animal: +10 points"
+				+ "\nRotate: -1 point";
 		}
+		view.SetText(messageText, message);
 	}
 
 	private void UpdateMenu()
 	{
 		if (isMenu) {
-			if ("LevelBuffaloButton" == view.mouseDown) {
-				SetState("LevelBuffalo");
+			if ("Level_0_Button" == view.mouseDown) {
+				SetState("Level_0");
 			}
-			else if ("LevelFoxButton" == view.mouseDown) {
-				SetState("LevelFox");
+			else if ("Level_1_Button" == view.mouseDown) {
+				SetState("Level_1");
 			}
 		}
 		else {
