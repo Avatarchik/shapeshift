@@ -23,6 +23,7 @@ using UnityEngine;
 public class SilhouetteOverlap
 {
 	public float step = 0.25f;
+			// 0.5f;
 	public float half;
 	public Vector2 point = new Vector2();
 	public bool isPerfect;

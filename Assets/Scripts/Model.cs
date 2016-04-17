@@ -3,13 +3,19 @@ using System.Collections.Generic;  // Dictionary
 public class Model : IModel
 {
 	public ViewModel view;
+	public bool isMenu = false;
 	public bool isDragEnabled = true;
 	public bool isItemSelected = false;
 	public bool isOverlapSilhouette = false;
 	public float rotateDegrees = 0.0f;
+	public string screenParent = "World";
 	public string piecesParent = "Pieces";
 	public string silhouetteParent = "Silhouette";
-	public string levelParent = "Level_Example";
+	public string levelsParent = "Levels";
+	public string levelState = "LevelBuffalo";
+	public string levelParent = "LevelBuffalo";
+	public string[] piecesLayers = new string[]{"Pieces"};
+	public string[] screen;
 	private int score;
 	private int scorePerPuzzle = 10;
 	private int scorePerRotation = -1;
@@ -25,10 +31,12 @@ public class Model : IModel
 	public void Start()
 	{
 		score = scorePerPuzzle;
+		screen = new string[]{"World"};
 		view.buttons = new string[] {
 			"LeftButton",
 			"RightButton",
-			"MenuButton"
+			"MenuButton",
+			"LevelBuffaloButton"
 		};
 		view.graph = new Dictionary<string, object>(){
 			{"Canvas", new Dictionary<string, object>(){
@@ -36,16 +44,19 @@ public class Model : IModel
 					{"ScoreText", null}
 				}}
 			}},
-			{"Levels", new Dictionary<string, object>(){
-				{"Level_Example", new Dictionary<string, object>(){
-					{"Silhouette", null},
-					{"Pieces", null}
+			{"World", new Dictionary<string, object>(){
+				{"Levels", new Dictionary<string, object>(){
+					{"Pieces", null},
+					{"LevelBuffalo", new Dictionary<string, object>(){
+						{"Silhouette", null}
+					}}
 				}}
 			}},
 			{"Developer", new Dictionary<string, object>(){
 				{"SilhouettePoint", null}
 			}}
 		};
+		SetState("LevelBuffalo");
 	}
 
 	private void UpdateRotate()
@@ -71,9 +82,34 @@ public class Model : IModel
 		}
 	}
 
+	private void SetState(string state)
+	{
+		levelState = state;
+		view.SetState(screen, levelState);
+		isMenu = "Menu" == levelState;
+		isDragEnabled = !isMenu;
+	}
+
+	private void UpdateMenu()
+	{
+		if (isMenu) {
+			if ("LevelBuffaloButton" == view.mouseDown) {
+				SetState("LevelBuffalo");
+			}
+		}
+		else {
+			if ("MenuButton" == view.mouseDown) {
+				SetState("Menu");
+			}
+		}
+	}
+
 	public void Update(float deltaTime)
 	{
-		UpdateRotate();
-		view.SetText(scoreText, score.ToString());
+		UpdateMenu();
+		if (!isMenu) {
+			UpdateRotate();
+			view.SetText(scoreText, score.ToString());
+		}
 	}
 }

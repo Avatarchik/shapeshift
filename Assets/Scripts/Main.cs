@@ -3,6 +3,7 @@
 public class Main : MainView
 {
 	public Vector2 silhouettePoint;
+	public bool isDragEnabled;
 	private TangramController tangram = new TangramController();
 
 	public override void Start()
@@ -18,7 +19,7 @@ public class Main : MainView
 		silhouettePoint = tangram.silhouette.point;
 		var gameObject = controller.view.graph["Developer"].children["SilhouettePoint"].self;
 		ViewUtil.SetPosition2D(gameObject, silhouettePoint);
-		ViewUtil.SetVisible(gameObject, !tangram.silhouette.isPerfect);
+		ViewUtil.SetVisible(gameObject, model.isDragEnabled && !tangram.silhouette.isPerfect);
 	}
 
 	public override void Update()
@@ -26,5 +27,6 @@ public class Main : MainView
 		base.Update();
 		tangram.Update();
 		UpdateSilhouettePoint();
+		isDragEnabled = tangram.model.isDragEnabled;
 	}
 }

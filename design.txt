@@ -13,14 +13,12 @@ FEATURES
 		Example of button of screen in Tangram by Magmamobile.
 	Count down rotations in score beside rotate button.
 	Snap rotation to 1/8th.
-
-TODO
-	Snap move to grid.
-		Snap silhouette to grid.
 	Score 10 for fitting pieces into silhouette.
 		Check overlaps point on grid.
+
+TODO
 	Menu button at bottom.
-	At menu overview the silhouettes.
+	At menu overview 4 silhouettes.
 	From menu, click rectangle of puzzle:  zoom camera into that.
 	Tutor 2 pieces.
 	Show the active shape.
@@ -31,6 +29,8 @@ TODO
 	Upload to Ludum Dare.
 	Highlight the selected piece.
 	Constrain dragging to play area.
+	Snap move to grid.
+		Snap silhouette to grid.
 	Illustrate colors and texture.  Example Montezuma Puzzle 2.
 	Tangram block font.
 	Fit.  Hear.
@@ -38,6 +38,7 @@ TODO
 	Hear rotation.
 	Illustrate background.
 	Bevel silhouette.  Example:  Montezuma Puzzle 2.
+	Address scene graph by strings, such as SetState("Main/Levels", "begin");
 
 REFERENCE GAME BRAINSTORM
 

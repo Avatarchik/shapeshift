@@ -1,4 +1,10 @@
 // Copied from Damian at http://unity.grogansoft.com/drag-and-drop/
+// Features Ethan added:
+// * Is enable
+// * Set layer mask
+// * Snap position
+// * Is scale optional
+// * Is item selected
 using UnityEngine;
 using System.Collections;
 
@@ -11,7 +17,27 @@ public class InputManager
 	public float snapSize = 0.0f;
 	private bool isDragging = false;
 	private Vector2 touchOffset;
+	RaycastHit2D[] touches = new RaycastHit2D[1];
+	public int layerMask = Physics2D.DefaultRaycastLayers;
    
+	public void SetLayerMask(string[] names)
+	{
+		layerMask = LayerMask.GetMask(names);
+	}
+
+	public void SetEnabled(bool isEnabled)
+	{
+		if (isEnabled != this.isEnabled)
+		{
+			this.isEnabled = isEnabled;
+			if (!isEnabled) {
+				draggedObject = null;
+				isDragging = false;
+				touches[0] = new RaycastHit2D();
+			}
+		}
+	}
+
 	public void Update()
 	{
 		if (!isEnabled)
@@ -51,11 +77,12 @@ public class InputManager
 		}
 		else
 		{
-			RaycastHit2D[] touches = Physics2D.RaycastAll(inputPosition, inputPosition, 0.5f);
+			touches[0] = new RaycastHit2D();
+			Physics2D.RaycastNonAlloc(inputPosition, inputPosition, touches, 0.5f, layerMask);
 			if (touches.Length > 0)
 			{
-				var hit = touches[0];
-				if (hit.transform != null)
+				RaycastHit2D hit = touches[0];
+				if (hit && hit.transform != null && hit.collider != null)
 				{
 					isDragging = true;
 					isItemSelected = true;

@@ -10,13 +10,14 @@ public class TangramController
 	public void Start()
 	{
 		drag.snapSize = 0.05f;
+		drag.SetLayerMask(model.piecesLayers);
 	}
 
 	private void UpdateSilhouette()
 	{
 		if (!silhouette.IsSetup()) {
-			GameObject silhouetteParent = view.graph["Levels"].children[model.levelParent].children[model.silhouetteParent].self;
-			GameObject piecesParent = view.graph["Levels"].children[model.levelParent].children[model.piecesParent].self;
+			GameObject silhouetteParent = view.graph[model.screenParent].children[model.levelsParent].children[model.levelParent].children[model.silhouetteParent].self;
+			GameObject piecesParent = view.graph[model.screenParent].children[model.levelsParent].children[model.piecesParent].self;
 			silhouette.Setup(
 				ViewUtil.GetChildren(silhouetteParent),
 				ViewUtil.GetChildren(piecesParent)
@@ -30,18 +31,20 @@ public class TangramController
 
 	private void UpdateDrag()
 	{
-		drag.isEnabled = model.isDragEnabled;
 		drag.Update();
 		model.isItemSelected = drag.isItemSelected;
 		if (null != drag.draggedObject && 0.0f != model.rotateDegrees) {
 			ViewUtil.Rotate(drag.draggedObject, model.rotateDegrees);
 		}
+		drag.SetEnabled(model.isDragEnabled);
 	}
 
 	public void Update()
 	{
-		UpdateSilhouette();
-		UpdateDrag();
+		if (!model.isMenu) {
+			UpdateSilhouette();
+			UpdateDrag();
+		}
 	}
 }
 
