@@ -11,6 +11,7 @@ public class Model : IModel
 	public float rotateDegrees = 0.0f;
 	public string screenParent = "World";
 	public string piecesParent = "Pieces";
+	public string pieceSelectedParent = "PieceSelected";
 	public string silhouetteParent = "Silhouette";
 	public string levelsParent = "Levels";
 	public string levelState = "Level_0";
@@ -52,6 +53,7 @@ public class Model : IModel
 			{"World", new Dictionary<string, object>(){
 				{"Levels", new Dictionary<string, object>(){
 					{"Pieces", null},
+					{"PieceSelected", null},
 					{"Level_0", new Dictionary<string, object>(){
 						{"Silhouette", null},
 						{"Feedback", null}
@@ -112,7 +114,7 @@ public class Model : IModel
 		view.SetState(screen, levelState);
 		string message;
 		if (isMenu) {
-			message = "To score high, pick a new shape with few rotations.";
+			message = "To score high, pick a similar shape.";
 		}
 		else {
 			message = "Fit animal: +10 points";

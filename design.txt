@@ -44,7 +44,9 @@ TODO
 	Illustrate background.
 	Bevel silhouette.  Example:  Montezuma Puzzle 2.
 	See grid.
-	Address scene graph by strings, such as SetState("Main/Levels", "begin");
+	Address scene graph by strings or object notation, such as SetState("Main/Levels", "begin");
+		Trim addresses:
+			var pieceSelected = view.graph[model.screenParent].children[model.levelsParent].children[model.pieceSelectedParent].self);
 
 REFERENCE GAME BRAINSTORM
 

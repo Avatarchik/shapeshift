@@ -32,6 +32,19 @@ public class TangramController
 		}
 	}
 
+	// Show piece selected at last dragged object.
+	// Test case:  2016-04-16 Rotate.  Jennifer Russ expects to see which piece will rotate.  Got confused.
+	private void UpdateViewPieceSelected()
+	{
+		var levelsTree = view.graph[model.screenParent].children[model.levelsParent];
+		var pieceSelected = levelsTree.children[model.pieceSelectedParent].self;
+		if (null != drag.draggedObject) {
+			ViewUtil.Reposition(drag.draggedObject, pieceSelected);
+		}
+		ViewUtil.SetVisible(pieceSelected,
+			model.isDragEnabled && drag.isItemSelected);
+	}
+
 	private void UpdateDrag()
 	{
 		drag.Update();
@@ -49,6 +62,7 @@ public class TangramController
 			UpdateDrag();
 			ViewUtil.CenterOnScreen(view.graph[model.screenParent].children[model.levelsParent].children[model.piecesParent].self);
 		}
+		UpdateViewPieceSelected();
 	}
 }
 
