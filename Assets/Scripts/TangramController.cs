@@ -9,7 +9,8 @@ public class TangramController
 
 	public void Start()
 	{
-		drag.snapSize = 0.1f;  // 0.05f;
+		drag.snapSize = 0.05f;
+				// 0.1f;
 		drag.disableTime = 0.125f;
 		drag.SetLayerMask(model.piecesLayers);
 	}
@@ -27,7 +28,7 @@ public class TangramController
 				ViewUtil.GetChildren(piecesParent)
 			);
 		}
-		else if (silhouette.Update())
+		else if (silhouette.Update() && !drag.isDragging)
 		{
 			model.OverlapSilhouette();
 		}

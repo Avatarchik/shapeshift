@@ -13,6 +13,7 @@ using System.Collections;
 public class InputManager
 {
 	public GameObject draggedObject;
+	public bool isDragging = false;
 	public bool isEnabled = false;
 	public bool isScale = false;
 	public bool isMouseEnabled = false;
@@ -21,7 +22,6 @@ public class InputManager
 	public float snapSize = 0.0f;
 	public float disableTime = 0.0f;
 	private float time = 1.0f;
-	private bool isDragging = false;
 	private float z = -99.0f;
 	private Vector2 touchOffset;
 	RaycastHit2D hit;

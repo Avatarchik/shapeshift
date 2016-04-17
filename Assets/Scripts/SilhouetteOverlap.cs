@@ -22,7 +22,11 @@ using UnityEngine;
 // file:///C:/Program%20Files/Unity/Editor/Data/Documentation/en/ScriptReference/Physics2D.OverlapPointNonAlloc.html
 public class SilhouetteOverlap
 {
-	public float step = 0.25f;
+	// A sharp corner smaller than this might be overlooked.
+	// Smaller step size performs more computations.
+	public float step = 0.0625f;
+			// 0.125f;
+			// 0.25f;
 			// 0.5f;
 	public float margin;
 	public Vector2 point = new Vector2();
@@ -55,7 +59,8 @@ public class SilhouetteOverlap
 	public void Setup(GameObject[] silhouetteObjects, GameObject[] pieceObjects)
 	{
 		margin = 
-			0.25f * step;
+			0.0f;
+			// 0.25f * step;
 			// 0.5f * step;
 			// step;
 		int index;

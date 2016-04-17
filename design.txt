@@ -28,22 +28,29 @@ FEATURES
 	At menu, hide buttons and move text down.
 	Start as leaping fox.
 	Jennifer sees clockwise and counterclockwise arrows.
-
-TODO
 	Select.  Do not immediately move a piece.
 		Timer to enable drag.
 		Next mouse down.
-	Jennifer sees 4 silhouettes, with clear order.
 	Jennifer plays 4 puzzles without guidance.
+	Jennifer conveniently fits the wolf.
+	Jennifer notices where a piece is not fitting.
+	Jennifer does not match fox tail when it is rotated 90 degrees off.
+	Jennifer is not blinded by particles behind.
+
+TODO
 	9 silhouettes.
+	Fit.  Hear.
+	Hear pickup and drop.  Example Montezuma Puzzle 2.
+	Hear rotation.
 	Upload to Ludum Dare.
+	Jennifer sees 4 silhouettes, with clear order.
+	Jennifer notices tip text.
+	Light of cell correlates to number of rotations there.
 	16 silhouettes.
 	Constrain dragging to play area.
 		Clamp item bounds in drag area bounds.
 		Raycast to drag area.
-	Fit.  Hear.
-	Hear pickup and drop.  Example Montezuma Puzzle 2.
-	Hear rotation.
+	Jennifer notices tip text.
 	Snap move to grid.
 		Snap silhouette to grid.
 	Illustrate colors and texture.  Example Montezuma Puzzle 2.

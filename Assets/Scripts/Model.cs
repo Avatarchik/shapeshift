@@ -133,7 +133,7 @@ public class Model : IModel
 		view.SetState(canvas, canvasState);
 		string message;
 		if (isMenu) {
-			message = "For a high score, shapeshift into a similar animal first.";
+			message = "For a high score, shapeshift into a SIMILAR animal first.";
 		}
 		else {
 			if (wasComplete()) {
