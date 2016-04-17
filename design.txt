@@ -45,7 +45,9 @@ TODO
 	Upload to Ludum Dare.
 	Jennifer sees 4 silhouettes, with clear order.
 	Jennifer notices tip text.
-	Light of cell correlates to number of rotations there.
+	Jennifer expects to see which way the button will rotate the object.
+	Visualize performance:
+		Alpha of particle correlates to few rotations there.
 	16 silhouettes.
 	Constrain dragging to play area.
 		Clamp item bounds in drag area bounds.

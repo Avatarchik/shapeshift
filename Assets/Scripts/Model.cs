@@ -1,3 +1,4 @@
+using UnityEngine;  // Mathf
 using System.Collections.Generic;  // Dictionary
 
 public class Model : IModel
@@ -8,6 +9,8 @@ public class Model : IModel
 	public bool isItemSelected = false;
 	public bool isOverlapSilhouette = false;
 	public Dictionary <string, bool> isOverlaps;
+	public Dictionary <string, int> rotationCounts;
+	public Dictionary <string, float> rotationNormals;
 	public float rotateDegrees = 0.0f;
 	public string screenParent = "World";
 	public string piecesParent = "Pieces";
@@ -21,6 +24,7 @@ public class Model : IModel
 	public string[] screen;
 	private int levelCount = 4;
 	private Dictionary<string, object> levels;
+	private float normalPerRotation = -0.1f;
 	private int score;
 	private int scorePerPuzzle = 10;
 	private int scorePerRotation = -1;
@@ -39,14 +43,21 @@ public class Model : IModel
 	{
 		levels = (Dictionary<string, object>) view.graph[screenParent];
 		levels = (Dictionary<string, object>) levels[levelsParent];
+		rotationCounts = new Dictionary<string, int>();
+		rotationNormals = new Dictionary<string, float>();
 		for (int level = 0; level < levelCount; level++) {
 			string levelName = "Level_" + level;
 			view.buttons[level + buttonOffset] = levelName + "/" + levelName;
 			isOverlaps[levelName] = false;
+			rotationCounts[levelName] = 0;
+			rotationNormals[levelName] = 1.0f;
 			levels[levelName] =
 				new Dictionary<string, object>(){
 					{"Silhouette", null},
-					{"Feedback", null}
+					{"Feedback", new Dictionary<string, object>(){
+						{"CorrectBackground", null},
+						{"Particles", null}
+					}}
 				};
 		}
 		SetState("Level_0");
@@ -75,6 +86,7 @@ public class Model : IModel
 			}}
 		};
 		isOverlaps = new Dictionary<string, bool>();
+		rotationCounts = new Dictionary<string, int>();
 
 		int hudButtonCount = 3;
 		int buttonCount = hudButtonCount + levelCount;
@@ -86,16 +98,26 @@ public class Model : IModel
 		SetupLevels(hudButtonCount);
 	}
 
+ 	private void ScoreRotate()
+	{
+		rotationCounts[levelParent]++;
+		rotationNormals[levelParent] = Mathf.Max(0.0f, 
+			Mathf.Min(1.0f, 
+				rotationNormals[levelParent] 
+				+ normalPerRotation));
+		score += scorePerRotation;
+	}
+
 	private void UpdateRotate()
 	{
 		rotateDegrees = 0.0f;
 		if (isDragEnabled && isItemSelected) {
 			if ("LeftButton" == view.mouseDown) {
-				score += scorePerRotation;
+				ScoreRotate();
 				rotateDegrees = degreesPerRotation;
 			}
 			else if ("RightButton" == view.mouseDown) {
-				score += scorePerRotation;
+				ScoreRotate();
 				rotateDegrees = -degreesPerRotation;
 			}
 		}

@@ -65,6 +65,14 @@ public class TangramController
 		}
 	}
 
+	// TODO
+	// Alpha of particle correlates to few rotations there.
+	private void UpdateFeedback()
+	{
+		// TODO: var child = view
+		// TODO: ViewUtil.SetOpacity(child, rotationNormals[model.levelParent]);
+	}
+
 	public void Update()
 	{
 		UpdateSilhouette();
