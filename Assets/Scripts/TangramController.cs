@@ -15,7 +15,10 @@ public class TangramController
 
 	private void UpdateSilhouette()
 	{
-		if (!silhouette.IsSetup()) {
+		if (model.isMenu) {
+			silhouette.Clear();
+		}
+		else if (!silhouette.IsSetup()) {
 			GameObject silhouetteParent = view.graph[model.screenParent].children[model.levelsParent].children[model.levelParent].children[model.silhouetteParent].self;
 			GameObject piecesParent = view.graph[model.screenParent].children[model.levelsParent].children[model.piecesParent].self;
 			silhouette.Setup(
@@ -23,7 +26,7 @@ public class TangramController
 				ViewUtil.GetChildren(piecesParent)
 			);
 		}
-		if (silhouette.Update())
+		else if (silhouette.Update())
 		{
 			model.OverlapSilhouette();
 		}
@@ -41,8 +44,8 @@ public class TangramController
 
 	public void Update()
 	{
+		UpdateSilhouette();
 		if (!model.isMenu) {
-			UpdateSilhouette();
 			UpdateDrag();
 			ViewUtil.CenterOnScreen(view.graph[model.screenParent].children[model.levelsParent].children[model.piecesParent].self);
 		}

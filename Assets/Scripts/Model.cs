@@ -23,6 +23,8 @@ public class Model : IModel
 	private float degreesPerRotation = 45.0f;
 	private string[] scoreText = new string[]{
 		"Canvas", "Panel", "ScoreText"};
+	private string[] messageText = new string[]{
+		"Canvas", "Pane", "MessageText"};
 
 	public void SetViewModel(ViewModel viewModel)
 	{
@@ -44,7 +46,8 @@ public class Model : IModel
 			{"Canvas", new Dictionary<string, object>(){
 				{"Panel", new Dictionary<string, object>(){
 					{"ScoreText", null}
-				}}
+				}},
+				{"MessageText", null}
 			}},
 			{"World", new Dictionary<string, object>(){
 				{"Levels", new Dictionary<string, object>(){
@@ -100,6 +103,17 @@ public class Model : IModel
 		isMenu = "Menu" == levelState;
 		isDragEnabled = !isMenu;
 		isOverlapSilhouette = false;
+		if (isMenu) {
+			view.SetText(messageText,
+				"To score high, pick a new shape with few rotations."
+				);
+		}
+		else {
+			view.SetText(messageText,
+				"Fit animal: +10 points"
+				+ "\nRotate: -1 point"
+				);
+		}
 	}
 
 	private void UpdateMenu()

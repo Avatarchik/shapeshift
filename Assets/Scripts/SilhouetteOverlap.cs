@@ -42,6 +42,12 @@ public class SilhouetteOverlap
 	private Vector3 min;
 	private Vector3 max;
 
+	public void Clear()
+	{
+		silhouettes = null;
+		pieces = null;
+	}
+
 	public bool IsSetup()
 	{
 		return null != silhouettes;
