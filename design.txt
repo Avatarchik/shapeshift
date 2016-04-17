@@ -30,12 +30,17 @@ FEATURES
 	Jennifer sees clockwise and counterclockwise arrows.
 
 TODO
+	Select.  Do not immediately move a piece.
+		Timer to enable drag.
+		Next mouse down.
 	Jennifer sees 4 silhouettes, with clear order.
 	Jennifer plays 4 puzzles without guidance.
 	9 silhouettes.
 	Upload to Ludum Dare.
 	16 silhouettes.
 	Constrain dragging to play area.
+		Clamp item bounds in drag area bounds.
+		Raycast to drag area.
 	Fit.  Hear.
 	Hear pickup and drop.  Example Montezuma Puzzle 2.
 	Hear rotation.
@@ -113,6 +118,8 @@ How can Jennifer enjoy one-minute?
 		Not difficult
 			http://www.craftsmanspace.com/free-projects/more-dissection-puzzle-plans.html
 		Octagonal
+	Shapeswitcher:  Switch shape to open lock
+		http://www.addictinggames.com/puzzle-games/shapeswitcher.jsp
 	Shape maze
 		https://www.eduplace.com/kids/mw/bt/k/k_01-2q.html
 	After you make the shapes, color them
@@ -165,6 +172,11 @@ REFERENCE ART
 
 NAME BRAINSTORM
 
+	Shapechanger
+	Shapechanger Challenge
+	Shapeshifter Challenge
+	Shapechanger Puzzle
+	Tangram Shapechanger
 	Tangram Shapeshifter
 	Tangram Shapeshift
 	Shapeshifter Puzzle

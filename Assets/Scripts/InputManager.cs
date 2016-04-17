@@ -5,6 +5,7 @@
 // * Snap position
 // * Is scale optional
 // * Is item selected
+// * Last dragged item will be selected in front next time
 using UnityEngine;
 using System.Collections;
 
@@ -16,6 +17,8 @@ public class InputManager
 	public bool isItemSelected = false;
 	public float snapSize = 0.0f;
 	private bool isDragging = false;
+	private bool isVerbose = false;
+	private float z = -99.0f;
 	private Vector2 touchOffset;
 	RaycastHit2D[] touches = new RaycastHit2D[1];
 	public int layerMask = Physics2D.DefaultRaycastLayers;
@@ -25,16 +28,15 @@ public class InputManager
 		layerMask = LayerMask.GetMask(names);
 	}
 
+	// Does not fully enable until next new mouse down.
 	public void SetEnabled(bool isEnabled)
 	{
 		if (isEnabled != this.isEnabled)
 		{
 			this.isEnabled = isEnabled;
-			if (!isEnabled) {
-				draggedObject = null;
-				isDragging = false;
-				touches[0] = new RaycastHit2D();
-			}
+			draggedObject = null;
+			isDragging = false;
+			touches[0] = new RaycastHit2D();
 		}
 	}
 
@@ -77,8 +79,7 @@ public class InputManager
 		}
 		else
 		{
-			touches[0] = new RaycastHit2D();
-			Physics2D.RaycastNonAlloc(inputPosition, inputPosition, touches, 0.5f, layerMask);
+			touches[0] = Physics2D.Raycast(inputPosition, new Vector2(0.0f, 0.0f), 0.5f, layerMask);
 			if (touches.Length > 0)
 			{
 				RaycastHit2D hit = touches[0];
@@ -87,10 +88,17 @@ public class InputManager
 					isDragging = true;
 					isItemSelected = true;
 					draggedObject = hit.transform.gameObject;
-					touchOffset = (Vector2)hit.transform.position - inputPosition;
+					z -= 1.0f;
+					Vector3 position = draggedObject.transform.position;
+					position.z = z;
+					draggedObject.transform.position = position;
+					touchOffset = (Vector2) hit.transform.position - inputPosition;
 					if (isScale)
 					{
 						draggedObject.transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
+					}
+					if (isVerbose) {
+						Debug.Log("InputManager.PickUp: " + inputPosition + draggedObject.transform.position);
 					}
 				}
 			}
