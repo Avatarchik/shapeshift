@@ -19,7 +19,7 @@ public class Model : IModel
 	public string[] piecesLayers = new string[]{"Pieces"};
 	public string[] canvas;
 	public string[] screen;
-	private int levelCount = 3;
+	private int levelCount = 4;
 	private Dictionary<string, object> levels;
 	private int score;
 	private int scorePerPuzzle = 10;
