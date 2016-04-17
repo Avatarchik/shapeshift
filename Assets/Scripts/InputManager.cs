@@ -6,6 +6,7 @@
 // * Is scale optional
 // * Is item selected
 // * Last dragged item will be selected in front next time
+// * Optionally keep disabled for a while to nullify old click
 using UnityEngine;
 using System.Collections;
 
@@ -14,13 +15,16 @@ public class InputManager
 	public GameObject draggedObject;
 	public bool isEnabled = false;
 	public bool isScale = false;
+	public bool isMouseEnabled = false;
 	public bool isItemSelected = false;
+	public bool isVerbose = false;
 	public float snapSize = 0.0f;
+	public float disableTime = 0.0f;
+	private float time = 1.0f;
 	private bool isDragging = false;
-	private bool isVerbose = false;
 	private float z = -99.0f;
 	private Vector2 touchOffset;
-	RaycastHit2D[] touches = new RaycastHit2D[1];
+	RaycastHit2D hit;
 	public int layerMask = Physics2D.DefaultRaycastLayers;
    
 	public void SetLayerMask(string[] names)
@@ -28,25 +32,30 @@ public class InputManager
 		layerMask = LayerMask.GetMask(names);
 	}
 
-	// Does not fully enable until next new mouse down.
-	public void SetEnabled(bool isEnabled)
+	// Does not fully enable until next new mouse down and time passes.
+	public void SetEnabled(bool isEnabledNow)
 	{
-		if (isEnabled != this.isEnabled)
+		if (isEnabledNow != isEnabled)
 		{
-			this.isEnabled = isEnabled;
+			isEnabled = isEnabledNow;
 			draggedObject = null;
 			isDragging = false;
-			touches[0] = new RaycastHit2D();
+			isMouseEnabled = false;
+			time = 0.0f;
+			if (isVerbose) {
+				Debug.Log("InputManager.SetEnabled: " + isEnabled);
+			}
 		}
 	}
 
 	public void Update()
 	{
-		if (!isEnabled)
+		time += Time.deltaTime;
+		if (!isEnabled || time < disableTime)
 		{
 			return;
 		}
-		if (HasInput)
+		else if (HasInput())
 		{
 			DragOrPickUp();
 		}
@@ -57,19 +66,16 @@ public class InputManager
 		}
 	}
 	 
-	Vector2 CurrentTouchPosition
+	private Vector2 CurrentTouchPosition()
 	{
-		get
-		{
-			Vector2 inputPos;
-			inputPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			return inputPos;
-		}
+		Vector2 inputPos;
+		inputPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		return inputPos;
 	}
  
 	private void DragOrPickUp()
 	{
-		Vector2 inputPosition = CurrentTouchPosition;
+		Vector2 inputPosition = CurrentTouchPosition();
 	 
 		if (isDragging)
 		{
@@ -79,11 +85,10 @@ public class InputManager
 		}
 		else
 		{
-			touches[0] = Physics2D.Raycast(inputPosition, new Vector2(0.0f, 0.0f), 0.5f, layerMask);
-			if (touches.Length > 0)
+			hit = Physics2D.Raycast(inputPosition, inputPosition, 0.5f, layerMask);
+			if (hit)
 			{
-				RaycastHit2D hit = touches[0];
-				if (hit && hit.transform != null && hit.collider != null)
+				if (hit.transform != null && hit.collider != null)
 				{
 					isDragging = true;
 					isItemSelected = true;
@@ -105,13 +110,16 @@ public class InputManager
 		}
 	}
  
-	private bool HasInput
+	// returns true if either the mouse button is down or at least one touch is felt on the screen
+	private bool HasInput()
 	{
-		get
-		{
-			// returns true if either the mouse button is down or at least one touch is felt on the screen
+		if (isMouseEnabled) {
 			return Input.GetMouseButton(0);
 		}
+		else if (Input.GetMouseButtonDown(0)) {
+			isMouseEnabled = true;
+		}
+		return false;
 	}
  
 	void DropItem()

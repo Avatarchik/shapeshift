@@ -10,6 +10,7 @@ public class TangramController
 	public void Start()
 	{
 		drag.snapSize = 0.1f;  // 0.05f;
+		drag.disableTime = 0.125f;
 		drag.SetLayerMask(model.piecesLayers);
 	}
 
@@ -55,20 +56,20 @@ public class TangramController
 
 	private void UpdateDrag()
 	{
+		drag.SetEnabled(model.isDragEnabled);
 		drag.Update();
 		model.isItemSelected = drag.isItemSelected;
 		if (null != drag.draggedObject && 0.0f != model.rotateDegrees) {
 			ViewUtil.Rotate(drag.draggedObject, model.rotateDegrees);
 		}
-		drag.SetEnabled(model.isDragEnabled);
 	}
 
 	public void Update()
 	{
 		UpdateSilhouette();
 		UpdateSilhouettePoint();
+		UpdateDrag();
 		if (!model.isMenu && !model.wasComplete()) {
-			UpdateDrag();
 			ViewUtil.CenterOnScreen(view.graph[model.screenParent].children[model.levelsParent].children[model.piecesParent].self);
 		}
 		UpdateViewPieceSelected();
