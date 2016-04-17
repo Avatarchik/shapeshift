@@ -26,14 +26,14 @@ FEATURES
 	Jennifer sees highlight on the selected piece that would rotate.
 	Highlight the completed silhouettes.  Particles repeat.
 	At menu, hide buttons and move text down.
+	Start as leaping fox.
+	Jennifer sees rotate buttons have clockwise and counterclockwise arrows.
 
 TODO
-	Start as fox.
 	Jennifer sees 4 silhouettes, with clear order.
 	Jennifer plays 4 puzzles without guidance.
 	9 silhouettes.
 	Upload to Ludum Dare.
-	Jennifer sees rotate buttons have clockwise and counterclockwise arrows.
 	16 silhouettes.
 	Constrain dragging to play area.
 	Fit.  Hear.
