@@ -44,6 +44,7 @@ public class TangramController
 		if (!model.isMenu) {
 			UpdateSilhouette();
 			UpdateDrag();
+			ViewUtil.CenterOnScreen(view.graph[model.screenParent].children[model.levelsParent].children[model.piecesParent].self);
 		}
 	}
 }

@@ -7,6 +7,7 @@ public class Model : IModel
 	public bool isDragEnabled = true;
 	public bool isItemSelected = false;
 	public bool isOverlapSilhouette = false;
+	public Dictionary <string, bool> isOverlaps;
 	public float rotateDegrees = 0.0f;
 	public string screenParent = "World";
 	public string piecesParent = "Pieces";
@@ -50,12 +51,19 @@ public class Model : IModel
 					{"Pieces", null},
 					{"LevelBuffalo", new Dictionary<string, object>(){
 						{"Silhouette", null}
+					}},
+					{"LevelFox", new Dictionary<string, object>(){
+						{"Silhouette", null}
 					}}
 				}}
 			}},
 			{"Developer", new Dictionary<string, object>(){
 				{"SilhouettePoint", null}
 			}}
+		};
+		isOverlaps = new Dictionary<string, bool>(){
+			{"LevelBuffalo", false},
+			{"LevelFox", false}
 		};
 		SetState("LevelBuffalo");
 	}
@@ -77,9 +85,10 @@ public class Model : IModel
 
 	public void OverlapSilhouette()
 	{
-		if (!isOverlapSilhouette) {
+		if (!isOverlapSilhouette && !isOverlaps[levelParent]) {
 			isOverlapSilhouette = true;
 			score += scorePerPuzzle;
+			isOverlaps[levelParent] = true;
 		}
 	}
 
@@ -90,6 +99,7 @@ public class Model : IModel
 		view.SetState(screen, levelState);
 		isMenu = "Menu" == levelState;
 		isDragEnabled = !isMenu;
+		isOverlapSilhouette = false;
 	}
 
 	private void UpdateMenu()

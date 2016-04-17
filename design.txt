@@ -15,11 +15,12 @@ FEATURES
 	Snap rotation to 1/8th.
 	Score 10 for fitting pieces into silhouette.
 		Check overlaps point on grid.
-
-TODO
 	Menu button at bottom.
 	At menu overview 4 silhouettes.
 	From menu, click rectangle of puzzle:  zoom camera into that.
+
+TODO
+	Select second puzzle.  See same pieces.
 	Tutor 2 pieces.
 	Show the active shape.
 	Highlight the completed silhouettes.
