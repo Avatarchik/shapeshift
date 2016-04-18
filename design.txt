@@ -266,3 +266,14 @@ Sun 04/17/2016
 
 CE7224FF
 773D08FF
+
+
+
+Mon 04/18/2016 
+06:57
+
+http://forum.unity3d.com/threads/rangeerror-maximum-call-stack-size-exceeded-after-unity-has-loaded-in-webgl.332956/
+
+http://www.slideshare.net/LiorTal1/lessons-learned-with-unity-and-webgl
+
+http://docs.unity3d.com/Manual/iphone-playerSizeOptimization.html
