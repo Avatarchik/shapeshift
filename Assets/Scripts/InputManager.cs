@@ -13,8 +13,10 @@ using System.Collections;
 public class InputManager
 {
 	public GameObject draggedObject;
+	public bool isDropNow = false;
 	public bool isDragging = false;
 	public bool isEnabled = false;
+	public bool isPickUpNow = false;
 	public bool isScale = false;
 	public bool isMouseEnabled = false;
 	public bool isItemSelected = false;
@@ -42,6 +44,8 @@ public class InputManager
 			isDragging = false;
 			isMouseEnabled = false;
 			time = 0.0f;
+			isPickUpNow = false;
+			isDropNow = false;
 			if (isVerbose) {
 				Debug.Log("InputManager.SetEnabled: " + isEnabled);
 			}
@@ -50,6 +54,8 @@ public class InputManager
 
 	public void Update()
 	{
+		isDropNow = false;
+		isPickUpNow = false;
 		time += Time.deltaTime;
 		if (!isEnabled || time < disableTime)
 		{
@@ -83,13 +89,14 @@ public class InputManager
 			position = ViewUtil.SnapXY(position, snapSize);
 			draggedObject.transform.position = position;
 		}
-		else
+		else if (!isPickUpNow)
 		{
 			hit = Physics2D.Raycast(inputPosition, inputPosition, 0.5f, layerMask);
 			if (hit)
 			{
 				if (hit.transform != null && hit.collider != null)
 				{
+					isPickUpNow = true;
 					isDragging = true;
 					isItemSelected = true;
 					draggedObject = hit.transform.gameObject;
@@ -124,10 +131,15 @@ public class InputManager
  
 	void DropItem()
 	{
-		isDragging = false;
-		if (isScale)
+		if (isDragging)
 		{
-			draggedObject.transform.localScale = new Vector3(1f,1f,1f);
+			isPickUpNow = false;
+			isDropNow = true;
+			isDragging = false;
+			if (isScale)
+			{
+				draggedObject.transform.localScale = new Vector3(1f,1f,1f);
+			}
 		}
 	}
 }
