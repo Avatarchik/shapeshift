@@ -26,7 +26,7 @@ public class Model : IModel
 	private Dictionary<string, object> levels;
 	private float normalPerRotation = -0.1f;
 	private int score;
-	private int scorePerPuzzle = 10;
+	private int scorePerPuzzle = 20;
 	private int scorePerRotation = -1;
 	private float degreesPerRotation = 45.0f;
 	private string[] scoreText = new string[]{
@@ -162,7 +162,7 @@ public class Model : IModel
 				message = "You already shapeshifted into this animal.";
 			}
 			else {
-				message = "Shapeshift into this animal:\n+10 points";
+				message = "Shapeshift into this animal:\n+" + scorePerPuzzle + " points";
 			}
 		}
 		view.SetText(messageText, message);

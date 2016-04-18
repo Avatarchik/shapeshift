@@ -8,7 +8,7 @@ Fire Fox said:
 Can you shapeshift into every animal with few rotations?
 
 Shapeshift:
-10 points
+20 points
 
 Rotate:
 -1 point
