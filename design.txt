@@ -36,13 +36,13 @@ FEATURES
 	Jennifer notices where a piece is not fitting.
 	Jennifer does not match fox tail when it is rotated 90 degrees off.
 	Jennifer is not blinded by particles behind.
+	9 silhouettes.
 
 TODO
-	9 silhouettes.
+	Upload to Ludum Dare.
 	Fit.  Hear.
 	Hear pickup and drop.  Example Montezuma Puzzle 2.
 	Hear rotation.
-	Upload to Ludum Dare.
 	Jennifer sees 4 silhouettes, with clear order.
 	Jennifer notices tip text.
 	Jennifer expects to see which way the button will rotate the object.
