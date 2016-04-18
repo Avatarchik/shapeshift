@@ -22,7 +22,7 @@ public class Model : IModel
 	public string[] piecesLayers = new string[]{"Pieces"};
 	public string[] canvas;
 	public string[] screen;
-	private int levelCount = 4;
+	private int levelCount = 9;
 	private Dictionary<string, object> levels;
 	private float normalPerRotation = -0.1f;
 	private int score;
